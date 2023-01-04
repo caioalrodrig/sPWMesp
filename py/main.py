@@ -4,6 +4,7 @@ import numpy as np
 
 class Pwm():
     '''Generate senoidal reference for sPWM '''
+<<<<<<< HEAD
     def __init__(self):
         self.top=100/2
         self._vecSin =np.zeros(49,dtype=int)
@@ -11,12 +12,22 @@ class Pwm():
     def gera_pwm(self):
         for i in range(0,49):
             self._vecSin[i]=int(np.sin(2*np.pi*i/self.top)*self.top)+self.top
+=======
+    def __init__(self,top):
+        self._ICR=top
+        self._vecSin =np.zeros(self._ICR,dtype=int)
+    
+    def gera_pwm(self):
+        for i in range(0,int(self._ICR)):
+            self._vecSin[i]=int(np.sin(2*np.pi*i/self._ICR)*self._ICR)+self._ICR
+>>>>>>> d7e6ed4f93afe28290fd978a0a2908d9d220bcfd
             i=i+1
         return self._vecSin
         
 
 
 if __name__=='__main__':
+<<<<<<< HEAD
     vec=np.array(Pwm().gera_pwm())
     plt.plot(vec)
     plt.show()
@@ -29,5 +40,13 @@ if __name__=='__main__':
     # 0x41, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x41, 0x42, 0x43, 0x44, 0x46, 0x47, 0x49, 0x4B,
     # 0x4D, 0xtop, 0x52, 0x55, 0x58, 0x5A, 0x5D, 0x61, 0x64, 0x67, 0x6A, 0x6E, 0x71, 0x75, 0x78, 0x7C])-64)
     plt.show()
+=======
+    vec=np.array(Pwm(3200).gera_pwm())
+    plt.plot(vec)
+    plt.show()
+    vec=np.array(Pwm().gera_pwm())
+    plt.plot(vec)
+    #plt.show()
+>>>>>>> d7e6ed4f93afe28290fd978a0a2908d9d220bcfd
     #print(vec)
 
